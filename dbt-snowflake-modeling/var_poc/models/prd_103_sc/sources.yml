@@ -1,0 +1,105 @@
+# ソーステーブル定義
+# TD-Snowflake移行: rawスキーマのテーブル定義
+
+version: 2
+
+sources:
+  - name: raw_prd_103_sc
+    description: "TROCCOによりSalesforceから取り込まれたrawデータ"
+    database: "{{ env_var('DEV_DB', 'PRD_DS_SC') }}"
+    schema: raw
+
+    tables:
+      # Contact（顧客）基本情報
+      - name: '"raw_contact"'
+        description: "Salesforce Contact基本情報の取り込みデータ"
+        columns:
+          - name: '"id"'
+            description: "SalesforceのContact ID"
+            tests:
+              - not_null
+          - name: '"cst_membersid__c"'
+            description: "顧客メンバーID"
+          - name: '"cst_firstpurchasedate__c"'
+            description: "初回購入日"
+          - name: '"cst_frequencyofsuits__c"'
+            description: "スーツ購入頻度"
+          - name: '"cst_concernofsuits__c"'
+            description: "スーツの悩み"
+          - name: '"cst_numberofsuits__c"'
+            description: "スーツ保有数"
+          - name: '"cst_shoespersistance__c"'
+            description: "靴のこだわり度"
+          - name: '"cst_frequencyofheel__c"'
+            description: "ヒール使用頻度"
+          - name: '"cst_job__c"'
+            description: "職業"
+          - name: '"title"'
+            description: "肩書き"
+          - name: '"cst_workplace__c"'
+            description: "勤務先"
+          - name: '"cst_hobby__c"'
+            description: "趣味"
+          - name: '"cst_familystructure__c"'
+            description: "家族構成"
+          - name: '"cst_iswarning__c"'
+            description: "警告フラグ"
+          - name: '"time"'
+            description: "データ取り込み時刻"
+            tests:
+              - not_null
+
+      # 顧客警告ノート
+      - name: '"raw_cst_warningnote__c"'
+        description: "顧客警告ノート情報の取り込みデータ"
+        columns:
+          - name: '"id"'
+            description: "警告ノートID"
+            tests:
+              - not_null
+          - name: '"membersid__c"'
+            description: "メンバーID"
+          - name: '"note__c"'
+            description: "警告ノート内容"
+          - name: '"time"'
+            description: "データ取り込み時刻"
+            tests:
+              - not_null
+
+      # 顧客コンタクトノート
+      - name: '"raw_cst_contactnote__c"'
+        description: "顧客コンタクトノート情報の取り込みデータ"
+        columns:
+          - name: '"id"'
+            description: "コンタクトノートID"
+            tests:
+              - not_null
+          - name: '"membersid__c"'
+            description: "メンバーID"
+          - name: '"note__c"'
+            description: "コンタクトノート内容"
+          - name: '"time"'
+            description: "データ取り込み時刻"
+            tests:
+              - not_null
+
+      # 顧客訪問履歴
+      - name: '"raw_cst_visit__c"'
+        description: "顧客訪問履歴情報の取り込みデータ"
+        columns:
+          - name: '"id"'
+            description: "訪問履歴ID"
+            tests:
+              - not_null
+          - name: '"membersid__c"'
+            description: "メンバーID"
+          - name: '"orderdate__c"'
+            description: "注文日"
+          - name: '"motive__c"'
+            description: "来店動機"
+          - name: '"note__c"'
+            description: "訪問ノート"
+          - name: '"time"'
+            description: "データ取り込み時刻"
+            tests:
+              - not_null
