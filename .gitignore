@@ -16,39 +16,27 @@ __pycache__/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-
 # Other system files
 Thumbs.db
 
-# .snowflake
 # Snowflake connection files
 .snowflake/*.p8
-# Snowflake configuration files
 .snowflake/*.toml
 
-# .ssh
+# SSH files
 .ssh/known_hosts
 
-# .dbt
-# DBT target files
-.dbt/.profiles.yml
-
+# DBT configuration files
+.dbt/profiles.yml
 .dbt/.user.yml
 
 # Python virtual environment
 .venv/
 
-#mcp
-.vscode/mcp.json
-
-# Local development files
-prd_103_sc/
-
-# aqua
+# Package management
 aqua-installer
 
-# snowflake connections files
-.snowflake/*.p8
-.snowflake/*.toml
+# VS Code MCP configuration
+.vscode/mcp.json
 
 
