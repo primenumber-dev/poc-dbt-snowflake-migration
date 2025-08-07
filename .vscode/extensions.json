@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "donjayamanne.githistory",
+        "innoverio.vscode-dbt-power-user",
+        "samuelcolvin.jinjahtml",
+        "redhat.vscode-yaml",
+        "ms-python.python",
+        "yzhang.markdown-all-in-one",
+        "github.copilot",
+        "snowflake.snowflake-vsc",
+        "eamodio.gitlens",
+        "charliermarsh.ruff",
+        "yzhang.markdown-all-in-one",
+        "mosapride.zenkaku",
+        "gruntfuggly.todo-tree",
+        "github.vscode-pull-request-github",
+    ],
+}

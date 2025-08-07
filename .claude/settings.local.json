@@ -1,0 +1,12 @@
+{
+  "enabledMcpjsonServers": [
+    "github",
+    "fetch",
+    "playwright",
+    "context7",
+    "markitdown",
+    "dbt-mcp",
+    "terraform-mcp-server"
+  ],
+  "enableAllProjectMcpServers": true
+}

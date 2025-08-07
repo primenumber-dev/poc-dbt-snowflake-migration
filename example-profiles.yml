@@ -1,0 +1,29 @@
+var_poc:
+  target: dev
+  outputs:
+    # 開発環境設定例
+    dev:
+      type: snowflake
+      private_key_path: "{{ env_var('DEV_SNOWFLAKE_PRIVATE_KEY') }}"
+      account: "{{ env_var('DEV_ACCOUNT') }}"
+      user: "{{ env_var('DEV_SNOW_USER') }}"
+      role: "{{ env_var('DEV_ROLE') }}"
+      database: "{{ env_var('DEV_DB') }}"
+      warehouse: "{{ env_var('DEV_WAREHOUSE') }}"
+      schema: "{{ env_var('DEV_SCHEMA') }}"
+      threads: 1
+
+# 追加のプロジェクト設定例
+# project_name:
+#   target: dev
+#   outputs:
+#     dev:
+#       type: snowflake
+#       private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY') }}"
+#       account: "{{ env_var('ACCOUNT') }}"
+#       user: "{{ env_var('USER') }}"
+#       role: "{{ env_var('ROLE') }}"
+#       database: "{{ env_var('DB') }}"
+#       warehouse: "{{ env_var('WAREHOUSE') }}"
+#       schema: "{{ env_var('SCHEMA') }}"
+#       threads: 1

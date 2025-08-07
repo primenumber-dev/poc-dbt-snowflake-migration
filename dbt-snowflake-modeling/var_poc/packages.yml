@@ -1,0 +1,16 @@
+# このファイルは、dbtプロジェクトで使用するパッケージを定義します。
+# 以下のパッケージは、おススメのdbtパッケージです。dbtプロジェクトの依存関係としてインストールされます。
+# 使用時はdbtのプロジェクトディレクトリに配置してください。
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.3.0
+  - package: metaplane/dbt_expectations
+    version: 0.10.8
+  - package: brooklyn-data/dbt_artifacts
+    version: 2.9.2
+  - package: elementary-data/elementary
+    version: 0.18.2
+  - package: dbt-labs/dbt_project_evaluator
+    version: 1.0.0
+  - package: dbt-labs/codegen
+    version: 0.13.1

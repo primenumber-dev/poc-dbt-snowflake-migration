@@ -1,0 +1,75 @@
+# dbtプロジェクト設定ファイル
+# TD-Snowflake移行検証用プロジェクト: prd_103_sc
+
+name: "var_poc"
+version: "1.0.0"
+config-version: 2
+
+# プロジェクトプロファイル（profiles.ymlの設定名と一致）
+profile: "var_poc"
+
+# モデルファイルの配置場所
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# dbtアーティファクトの出力先
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+# Snowflake用クォート設定（プロジェクト全体で小文字テーブル名を使用）
+quoting:
+  identifier: true
+
+# モデル設定
+models:
+  var_poc:
+    # 全プロジェクト共通設定
+    +materialized: table
+
+    # prd_103_sc プロジェクト固有設定
+    prd_103_sc:
+      +tags: ["prd_103_sc", "salesforce"]
+      marts:
+        +materialized: table
+        +schema: processed
+        +pre-hook: ["{{ log('実行開始: ' ~ this, info=true) }}"]
+        +post-hook: ["{{ log('実行完了: ' ~ this, info=true) }}"]
+
+    # 共有リソース用（将来的な共通モデル配置場所）
+    shared:
+      +tags: ["shared", "common"]
+      staging:
+        +materialized: view
+        +schema: shared_staging
+      marts:
+        +materialized: table
+        +schema: shared_marts
+
+# テスト設定
+tests:
+  +store_failures: true
+  +schema: test_failures
+
+# シード設定（CSVファイル）
+seeds:
+  +schema: seeds
+
+# 変数定義（環境別設定）
+vars:
+  # デフォルト設定
+  raw_schema: "raw"
+  processed_schema: "processed"
+
+  # TD固有の処理設定
+  td_time_column: "time"
+  dedup_key_separator: "_"
+
+  # プロジェクト別変数（将来拡張用）
+  prd_103_sc:
+    source_system: "salesforce"
+    update_frequency: "daily"
+    timezone: "Asia/Tokyo"

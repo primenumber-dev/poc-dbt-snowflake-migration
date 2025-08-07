@@ -1,0 +1,51 @@
+# dbt関連ファイル
+target/
+dbt_packages/
+logs/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 環境変数ファイル
+.env
+.env.local
+.env.*.local
+
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.temp
+*~
+
+# Snowflake関連の一時ファイル
+*.snowsql_history
+
+# Python関連（dbt環境用）
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.python-version
+
+aqua-installer/
+
